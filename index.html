@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>百度微任务全屏滑动jQuery</title>
+    <title>我给自己画张像</title>
     <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
     <link href="css/bootstrap.min.css" rel="stylesheet">
 	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
@@ -11,139 +11,758 @@
 	<script>
 		//var loginFlag = false;
 		//var loginHelper = null;
-		$(document).ready(function(){
-			$('.carousel').carousel(
-				{
-					"pause":"false",
-					"interval":20000
-				}
-			);
+		// $(document).ready(function(){
+		// 	$('.carousel').carousel(
+		// 		{
+		// 			"pause":"false",
+		// 			"interval":20000
+		// 		}
+		// 	);
 			
-			$('.carousel').on('slide.bs.carousel', function (event) {
-				var tag = $(event.relatedTarget).attr("tag");
-				var progress = $(event.relatedTarget).attr("progress");
+		// 	$('.carousel').on('slide.bs.carousel', function (event) {
+		// 		var tag = $(event.relatedTarget).attr("tag");
+		// 		var progress = $(event.relatedTarget).attr("progress");
 				
-				$('#img_home').attr("src", "images/home.png");
-				$('#img_intro').attr("src", "images/intro.png");
-				$('#img_gift').attr("src", "images/gift.png");
-				$('#img_feedback').attr("src", "images/feedback.png");
-				$('#img_related').attr("src", "images/related.png");
+		// 		$('#img_home').attr("src", "images/home.png");
+		// 		$('#img_intro').attr("src", "images/intro.png");
+		// 		$('#img_gift').attr("src", "images/gift.png");
+		// 		$('#img_feedback').attr("src", "images/feedback.png");
+		// 		$('#img_related').attr("src", "images/related.png");
 				
-				$('#img_' + tag).attr("src", "images/" + tag + "_selected.png");
+		// 		$('#img_' + tag).attr("src", "images/" + tag + "_selected.png");
 				
-				//$("#progress").width(progress + "px");
-				//$("#progress").css('left', (progress / 2) - 400 + "px");
-				$("#progress").animate({width: progress, left: (progress / 2) - 400}, 500);
-				playAnimation(tag);
-			});
+		// 		//$("#progress").width(progress + "px");
+		// 		//$("#progress").css('left', (progress / 2) - 400 + "px");
+		// 		$("#progress").animate({width: progress, left: (progress / 2) - 400}, 500);
+		// 		playAnimation(tag);
+		// 	});
 			
-			$("body,html").animate({
-               scrollTop:($("#page_home .splash-container").offset().top)
-            },10);
+		// 	$("body,html").animate({
+        //        scrollTop:($("#page_home .splash-container").offset().top)
+        //     },10);
 			
-			playAnimation("home");
+		// 	playAnimation("home");
 			
-		}); 
+		// }); 
 		
-		function switchPage(pageIndex){
-			$('.carousel').carousel(pageIndex);
-		}
+		// function switchPage(pageIndex){
+		// 	$('.carousel').carousel(pageIndex);
+		// }
 		
-		function playAnimation(tag){
-			var ani1 = $("#page_" + tag + " .ani_step_1");
-			var ani2 = $("#page_" + tag + " .ani_step_2");
-			var ani3 = $("#page_" + tag + " .ani_step_3");
-			var pre_start = ((tag == "home") ? 0 : 300);
-			if(ani1 != null){
-				ani1.css("opacity", 0);
-				setTimeout(function(){
-					ani1.animate({opacity: 1}, 1000);
-				}, 10 + pre_start);
-			}
-			if(ani2 != null){
-				ani2.css("opacity", 0);
-				setTimeout(function(){
-					ani2.animate({opacity: 1}, 1000);
-				}, 1500 + pre_start);
-			}
-			if(ani3 != null){
-				ani3.css("opacity", 0);
-				setTimeout(function(){
-					$("#page_" + tag + " .ani_step_3").animate({opacity: 1}, 1000);
-				}, 3000 + pre_start);
-			}
-		}
+		// function playAnimation(tag){
+		// 	var ani1 = $("#page_" + tag + " .ani_step_1");
+		// 	var ani2 = $("#page_" + tag + " .ani_step_2");
+		// 	var ani3 = $("#page_" + tag + " .ani_step_3");
+		// 	var pre_start = ((tag == "home") ? 0 : 300);
+		// 	if(ani1 != null){
+		// 		ani1.css("opacity", 0);
+		// 		setTimeout(function(){
+		// 			ani1.animate({opacity: 1}, 1000);
+		// 		}, 10 + pre_start);
+		// 	}
+		// 	if(ani2 != null){
+		// 		ani2.css("opacity", 0);
+		// 		setTimeout(function(){
+		// 			ani2.animate({opacity: 1}, 1000);
+		// 		}, 1500 + pre_start);
+		// 	}
+		// 	if(ani3 != null){
+		// 		ani3.css("opacity", 0);
+		// 		setTimeout(function(){
+		// 			$("#page_" + tag + " .ani_step_3").animate({opacity: 1}, 1000);
+		// 		}, 3000 + pre_start);
+		// 	}
+		// }
+
+
+
+		
 	</script>
 </head>
 <body>
+	<style>
+		
+		#splash >.splash-container >img{
+			border-radius: 50%;
+			width: 200px;
+			height: 200px;
+		}
+		
+		.jbxx_inner{
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+		}
+		.jbxx_col_l,.jbxx_col_r{
+			width: 50%;
+		}
+		.jbxx_content{
+			text-align: left;
+		}
+		.jbxx_col_l_container{
+			width: 80%;
+			margin:0 auto;
+		}
+		.jbxx_content>li{
+			font-size: 16px;
+			font-family: '微软雅黑';
+			/* color:#F5F5F5; */
+			height: 40px;
+			line-height: 40px;
+		}
+		.jbxx_title{
+			color:#F5F5F5;
+		}
+
+		/* 第二个 */
+		.project_dv>img{
+			width: 200px;
+			height: 300px;
+		}
+		.project_content{
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			margin-top: 80px;
+		}
+		.project_dv{
+			width: 30%;
+		}
+		.project_inner{
+			width: 70%;
+			text-align: left;
+		}
+		.project_introduce{
+			font-weight: 700;
+			font-size: 16px;
+			color:#000;
+			height: 20px;
+			line-height: 20px;
+		}
+		.project_introduce_content{
+			font-size: 14px;
+			color:#3C3C3C;
+			line-height: 20px;
+			margin-left:10px;
+		}
+		/* bootstrap样式 */
+		.carousel-indicators li{
+			border: 1px solid #428bca;
+		}
+		.carousel-indicators .active {
+			background-color: #428bca;
+		}
+		.float-left{
+			display: inline-block;
+		}
+	</style>
 <div id="ad"></div>
 <div id="carousel_container" class="carousel slide full_height">
 	<div class="carousel-inner full_height">
-		<div id="page_home" class="page item active" tag="home" progress="150">
+		<div id="page_home" class="page item " tag="home" progress="150">
 			<div id="main">
 				<div id="splash">
 					<div class="container splash-container">
-						<img src="images/title.png" alt="百度微任务" class="ani_step_2"/>
-						<div id="splash_introduction" class="ani_step_2">
-							<img src="images/home_desc.png" alt="百度微任务介绍"/>
-						</div>
-						<div id="download_btn_group" class="container ani_step_1">
-							<div id="download_place_holder" class="horizental-item" ></div>
-							<div class="horizental-item">
-								<a href="#"  id="splash_download_button" class="download-button">
-									<div class="download-title">
-										<div id="download_icon"></div><span>&nbsp;&nbsp;立即体验11</span>
-									</div>
-									<div class="download-subtitle">
-										百度微任务V2.2.1 Android下载 12月31日更新
-									</div>
-								</a>
-							</div>
-							<div class="horizental-item">
-								<div id="splash_download_qrcode">
-									<img class="qrcode" src="./images/qrcode.png" alt="二维码下载">
-									<div id="qrcode_hint">建议使用<a href="#">百度手机浏览器</a>扫描</div>
+						<img src="images/tx_img.png" alt="百度微任务" class="ani_step_2"/>
+						<!-- <h2 class='jbxx_title'>智sir</h2> -->
+						<div class="jbxx_inner">
+							<div class="jbxx_col_l">
+								<div class="jbxx_col_l_container">
+									<h3>基本信息</h3>
+									<ul class="jbxx_content">
+										<li><span>个人状态：</span><span>来自盐城，定居南京</span></li>
+										<li><span>涉及方向：</span><span>Web开发、微信小程序</span></li>
+										<li><span>个人爱好：</span><span>生活、体育、音乐、旅游、编程</span></li>
+										<li><span>把握当下：</span><span>过去是经历，现在是尝试，未来是期待，用经历尝试就会达到你的期待。</span></li>
+									</ul>
 								</div>
-								
+							</div>
+							<div class="jbxx_col_r">
+								<h3>技能数</h3>
+								<div>
+									 <div class="progress">
+										<div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+											<span >前端 60%</span>
+										</div>
+									  </div>
+									  <div class="progress">
+										<div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+										  <span >微信小程序 50%</span>
+										</div>
+									  </div>
+									  <div class="progress">
+										<div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+										  <span >java 67%</span>
+										</div>
+									  </div>
+									  <div class="progress">
+										<div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+										  <span >数据库 40%</span>
+										</div>
+									  </div>
+								</div>
 							</div>
 						</div>
-						<div id="ct_link" class="ani_step_3">
-						<p>适用浏览器：IE8、360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗.</p>
-						<p>来源：<a href="#" >jq22</a></p>
-						</div>
+						
 					</div>
 				</div>
 			</div>
 		</div>
-		<div id="page_intro" class="page item" tag="intro" progress="300">
+		<div id="page_intro" class="page item " tag="intro" progress="300">
 			<div id="main">
 				<div id="splash" class="ani_step_1">
 					<div class="container splash-container">
-						<img src="images/intro_splash.png" alt="微任务介绍"/>
+						<!-- tab切换 -->
+						<div class="bs-example bs-example-tabs" data-example-id="togglable-tabs">
+							<ul id="myTabs" class="nav nav-pills" role="tablist">
+							  <li role="presentation" class="active"><a href="#project01" id="project01-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">警情监测管理实战平台</a></li>
+							  <li role="presentation" class=""><a href="#project02" role="tab" id="project02-tab" data-toggle="tab" aria-controls="profile" aria-expanded="false">禁毒实战管理平台</a></li>
+							  <li role="presentation" class=""><a href="#project03" role="tab" id="project03-tab" data-toggle="tab" aria-controls="profile" aria-expanded="false">OSM汽车销售系统</a></li>
+							</ul>
+							<div id="myTabContent" class="tab-content">
+							  <div role="tabpanel" class="tab-pane fade active in" id="project01" aria-labelledby="project01-tab">
+								<div class="project_content">
+									<div class="project_dv">
+										<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+											<!-- Indicators -->
+											<ol class="carousel-indicators">
+											  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+											  <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+											  <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+											</ol>
+										  
+											<!-- Wrapper for slides -->
+											<div class="carousel-inner" role="listbox">
+											  <div class="item active">
+												<img src="images/gift_splash.png" alt="...">
+												<div class="carousel-caption">
+												  
+												</div>
+											  </div>
+											  <div class="item">
+												<img src="images/tx_img.png" alt="...">
+												<div class="carousel-caption">
+												 
+												</div>
+											  </div>
+											  <div class="item">
+												<img src="images/tx_img.png" alt="...">
+												<div class="carousel-caption">
+												 
+												</div>
+											  </div>
+											</div>
+										  
+											<!-- Controls -->
+											<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+											  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+											  <span class="sr-only">Previous</span>
+											</a>
+											<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+											  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+											  <!-- 文本注释用 -->
+											  <span class="sr-only">Next</span>
+											</a>
+										  </div>
+										
+									</div>
+									<div class="project_inner">
+										<ul>
+											<li>
+												<p class="project_introduce float-left">项目框架:</p>
+												<p class="project_introduce_content  float-left" >SpringMvc+Mybasic+Oracle+Redis</p>
+											</li>
+											<li>
+												<p class="project_introduce float-left">开发环境:</p>
+												<p class="project_introduce_content float-left">MyEclipse、Tomcat</p>
+											</li>
+											<li>
+												<p class="project_introduce">项目简介:</p>
+												<p class="project_introduce_content " style="text-indent:2em">通过搜集网络平台上关键词眼的信息进行分析并人工识别，确定有价值新增到管理系统中，最终实现信息流转的闭环</p>
+											</li>
+											<li>
+												<p class="project_introduce">责任描述:</p>
+												<p class="project_introduce_content">
+													<ol>
+														<li>根据需求设计业务流程图</li>
+														<li>使用Redis实现单点登录</li>
+														<li>使用证书文件配置实现证书登陆</li>
+														<li>解决项目运行一段时间出现内存泄漏问题</li>
+													</ol>	
+												</p>
+											</li>
+											<!-- <li>
+												<p class="project_introduce">问题解决:</p>
+												<p class="project_introduce_content">
+													<ol>
+														<li>订单每次添加或减少需要重新换算价格</li>
+													</ol>	
+												</p>
+											</li> -->
+										</ul>
+									</div>
+								</div>
+							  </div>
+							  <div role="tabpanel" class="tab-pane fade" id="project02" aria-labelledby="project02-tab">
+								<div class="project_content">
+									<div class="project_dv">
+										<div id="carousel-example-generic1" class="carousel slide" data-ride="carousel">
+											<!-- Indicators -->
+											<ol class="carousel-indicators">
+											  <li data-target="#carousel-example-generic1" data-slide-to="0" class="active"></li>
+											  <li data-target="#carousel-example-generic1" data-slide-to="1"></li>
+											  <li data-target="#carousel-example-generic1" data-slide-to="2"></li>
+											</ol>
+										  
+											<!-- Wrapper for slides -->
+											<div class="carousel-inner" role="listbox">
+											  <div class="item active">
+												<img src="images/gift_splash.png" alt="...">
+												<div class="carousel-caption">
+												  
+												</div>
+											  </div>
+											  <div class="item">
+												<img src="images/tx_img.png" alt="...">
+												<div class="carousel-caption">
+												 
+												</div>
+											  </div>
+											  <div class="item">
+												<img src="images/tx_img.png" alt="...">
+												<div class="carousel-caption">
+												 
+												</div>
+											  </div>
+											</div>
+										  
+											<!-- Controls -->
+											<a class="left carousel-control" href="#carousel-example-generic1" role="button" data-slide="prev">
+											  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+											  <span class="sr-only">Previous</span>
+											</a>
+											<a class="right carousel-control" href="#carousel-example-generic1" role="button" data-slide="next">
+											  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+											  <!-- 文本注释用 -->
+											  <span class="sr-only">Next</span>
+											</a>
+										  </div>
+										
+									</div>
+									<div class="project_inner">
+										<ul>
+											<li>
+												<p class="project_introduce float-left">项目框架:</p>
+												<p class="project_introduce_content  float-left" >SpringMvc+Mybasic+MySQL+Duddo+Redis+MangoDB</p>
+											</li>
+											<li>
+												<p class="project_introduce float-left">开发环境:</p>
+												<p class="project_introduce_content float-left">MyEclipse、Tomcat、Maven、JDK</p>
+											</li>
+											<li>
+												<p class="project_introduce">项目简介:</p>
+												<p class="project_introduce_content " style="text-indent:2em">本项目是实现管理重点关注人员一切行轨迹，精准比对出关注人员信息加快人员定性处理，从而实现了对人员的研判</p>
+											</li>
+											<li>
+												<p class="project_introduce">责任描述:</p>
+												<p class="project_introduce_content">
+													<ol>
+														<li>使用多线程发起多个任务比对</li>
+														<li>使用Redis实现单点登录</li>
+														<li>使用证书文件配置实现证书登陆</li>
+														<li>基于vue展示可视化首页</li>
+													</ol>	
+												</p>
+											</li>
+											<!-- <li>
+												<p class="project_introduce">问题解决:</p>
+												<p class="project_introduce_content">
+													<ol>
+														<li>订单每次添加或减少需要重新换算价格</li>
+													</ol>	
+												</p>
+											</li> -->
+										</ul>
+									</div>
+								</div>
+							  </div>
+							  <div role="tabpanel" class="tab-pane fade" id="project03" aria-labelledby="project03-tab">
+								<div class="project_content">
+									<div class="project_dv">
+										<div id="carousel-example-generic2" class="carousel slide" data-ride="carousel">
+											<!-- Indicators -->
+											<ol class="carousel-indicators">
+											  <li data-target="#carousel-example-generic2" data-slide-to="0" class="active"></li>
+											  <li data-target="#carousel-example-generic2" data-slide-to="1"></li>
+											  <li data-target="#carousel-example-generic2" data-slide-to="2"></li>
+											</ol>
+										  
+											<!-- Wrapper for slides -->
+											<div class="carousel-inner" role="listbox">
+											  <div class="item active">
+												<img src="images/gift_splash.png" alt="...">
+												<div class="carousel-caption">
+												  
+												</div>
+											  </div>
+											  <div class="item">
+												<img src="images/tx_img.png" alt="...">
+												<div class="carousel-caption">
+												 
+												</div>
+											  </div>
+											  <div class="item">
+												<img src="images/tx_img.png" alt="...">
+												<div class="carousel-caption">
+												 
+												</div>
+											  </div>
+											</div>
+										  
+											<!-- Controls -->
+											<a class="left carousel-control" href="#carousel-example-generic2" role="button" data-slide="prev">
+											  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+											  <span class="sr-only">Previous</span>
+											</a>
+											<a class="right carousel-control" href="#carousel-example-generic2" role="button" data-slide="next">
+											  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+											  <!-- 文本注释用 -->
+											  <span class="sr-only">Next</span>
+											</a>
+										  </div>
+										
+									</div>
+									<div class="project_inner">
+										<ul>
+											<li>
+												<p class="project_introduce float-left">项目框架:</p>
+												<p class="project_introduce_content  float-left" >SpringMvc+Mybasic+MySQL+Duddo+Redis+MangoDB</p>
+											</li>
+											<li>
+												<p class="project_introduce float-left">开发环境:</p>
+												<p class="project_introduce_content float-left">Eclipse、Tomcat、Maven、JDK</p>
+											</li>
+											<li>
+												<p class="project_introduce">项目简介:</p>
+												<p class="project_introduce_content " style="text-indent:2em">本项目是实现经销商可在线上下订单获取货源，拓展店与店之间交换车辆、店与厂之间交换车辆，从而实现了车辆资源合理分配</p>
+											</li>
+											<li>
+												<p class="project_introduce">责任描述:</p>
+												<p class="project_introduce_content">
+													<ol>
+														<li>订单每次添加或减少需要重新换算价格</li>
+														<li>使用poi工具类实现excel导入订单，发起数据计算后导出车辆结果</li>
+														<li>使用echarts图展示工作质态</li>
+														<li>使用分词技术根据用户搜索词频次分析出结果</li>
+													</ol>	
+												</p>
+											</li>
+											<!-- <li>
+												<p class="project_introduce">问题解决:</p>
+												<p class="project_introduce_content">
+													<ol>
+														<li>订单每次添加或减少需要重新换算价格</li>
+													</ol>	
+												</p>
+											</li> -->
+										</ul>
+									</div>
+								</div>
+							  </div>
+							</div>
+						  </div>
+						<!-- <img src="images/intro_splash.png" alt="微任务介绍"/> -->
 					</div>
 				</div>
 			</div>
 		</div>
-		<div id="page_gift" class="page item" tag="gift" progress="450">
+		<div id="page_gift" class="page item " tag="gift" progress="450">
 			<div id="main">
 				<div id="splash">
 					<div class="container splash-container ani_step_2">
-						<img src="images/gift_splash.png" alt="精美礼品"/>
+						<!-- tab切换 -->
+						<div class="bs-example bs-example-tabs" data-example-id="togglable-tabs" >
+							<ul id="myTabs" class="nav nav-pills" role="tablist">
+							  <li role="presentation" class="active"><a href="#project04" id="project01-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">聊天系统</a></li>
+							  <li role="presentation" class=""><a href="#project05" role="tab" id="project02-tab" data-toggle="tab" aria-controls="profile" aria-expanded="false">影片系统</a></li>
+							  <li role="presentation" class=""><a href="#project06" role="tab" id="project03-tab" data-toggle="tab" aria-controls="profile" aria-expanded="false">宾馆小程序</a></li>
+							</ul>
+							<div id="myTabContent" class="tab-content">
+							  <div role="tabpanel" class="tab-pane fade active in" id="project04" aria-labelledby="project01-tab">
+								<div class="project_content">
+									<div class="project_dv">
+										<div id="carousel-example-generic3" class="carousel slide" data-ride="carousel" data-pause="hover" data-interval="3000">
+											<!-- Indicators -->
+											<ol class="carousel-indicators">
+											  <li data-target="#carousel-example-generic3" data-slide-to="0" class="active"></li>
+											  <li data-target="#carousel-example-generic3" data-slide-to="1"></li>
+											  <li data-target="#carousel-example-generic3" data-slide-to="2"></li>
+											</ol>
+										  
+											<!-- Wrapper for slides -->
+											<div class="carousel-inner" role="listbox">
+											  <div class="item active">
+												<img src="images/gift_splash.png" alt="...">
+												<div class="carousel-caption">
+												  
+												</div>
+											  </div>
+											  <div class="item">
+												<img src="images/tx_img.png" alt="...">
+												<div class="carousel-caption">
+												 
+												</div>
+											  </div>
+											  <div class="item">
+												<img src="images/tx_img.png" alt="...">
+												<div class="carousel-caption">
+												 
+												</div>
+											  </div>
+											</div>
+										  
+											<!-- Controls -->
+											<a class="left carousel-control" href="#carousel-example-generic3" role="button" data-slide="prev">
+											  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+											  <span class="sr-only">Previous</span>
+											</a>
+											<a class="right carousel-control" href="#carousel-example-generic3" role="button" data-slide="next">
+											  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+											  <!-- 文本注释用 -->
+											  <span class="sr-only">Next</span>
+											</a>
+										  </div>
+										
+									</div>
+									<div class="project_inner">
+										<ul>
+											<li>
+												<p class="project_introduce float-left">项目框架:</p>
+												<p class="project_introduce_content  float-left" >Springboot+Mybasic+MySQL+Redis+Layim</p>
+											</li>
+											<li>
+												<p class="project_introduce float-left">开发环境:</p>
+												<p class="project_introduce_content float-left">Eclipse、Maven、JDK</p>
+											</li>
+											<li>
+												<p class="project_introduce">项目简介:</p>
+												<p class="project_introduce_content " style="text-indent:2em">本作品模拟qq聊天功能实现了一对一及时收发消息，上线提醒等功能，可用于平台客服聊天</p>
+											</li>
+											<li>
+												<p class="project_introduce">责任描述:</p>
+												<p class="project_introduce_content">
+													<ol>
+														<li>使用Redis单点登录</li>
+														<li>使用socket聊天通信</li>
+														<li>使用七牛服务上传聊天文件</li>
+														<li>设计聊天系统表结构</li>
+														<li>使用递归评论</li>
+													</ol>	
+												</p>
+											</li>
+											<!-- <li>
+												<p class="project_introduce">问题解决:</p>
+												<p class="project_introduce_content">
+													<ol>
+														<li>订单每次添加或减少需要重新换算价格</li>
+													</ol>	
+												</p>
+											</li> -->
+										</ul>
+									</div>
+								</div>
+							  </div>
+							  <div role="tabpanel" class="tab-pane fade" id="project05" aria-labelledby="project02-tab">
+								<div class="project_content">
+									<div class="project_dv">
+										<div id="carousel-example-generic4" class="carousel slide" data-ride="carousel">
+											<!-- Indicators -->
+											<ol class="carousel-indicators">
+											  <li data-target="#carousel-example-generic4" data-slide-to="0" class="active"></li>
+											  <li data-target="#carousel-example-generic4" data-slide-to="1"></li>
+											  <li data-target="#carousel-example-generic4" data-slide-to="2"></li>
+											  <li data-target="#carousel-example-generic4" data-slide-to="3"></li>
+											</ol>
+										  <style>
+											  .yp>.item>img{
+												  height: 340px;
+												  width: 340px;
+											  }
+										  </style>
+											<!-- Wrapper for slides -->
+											<div class="carousel-inner yp" role="listbox">
+											  <div class="item active">
+												<img src="images/zp_yp04.jpg" alt="..." >
+												<div class="carousel-caption">
+												  
+												</div>
+											  </div>
+											  <div class="item">
+												<img src="images/zp_yp02.jpg" alt="...">
+												<div class="carousel-caption">
+												 
+												</div>
+											  </div>
+											  <div class="item">
+												<img src="images/zp_yp03.jpg" alt="...">
+												<div class="carousel-caption">
+												 
+												</div>
+											  </div>
+											  <div class="item">
+												<img src="images/zp_yp01.jpg" alt="...">
+												<div class="carousel-caption">
+												 
+												</div>
+											  </div>
+											</div>
+										  
+											<!-- Controls -->
+											<a class="left carousel-control" href="#carousel-example-generic4" role="button" data-slide="prev">
+											  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+											  <span class="sr-only">Previous</span>
+											</a>
+											<a class="right carousel-control" href="#carousel-example-generic4" role="button" data-slide="next">
+											  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+											  <!-- 文本注释用 -->
+											  <span class="sr-only">Next</span>
+											</a>
+										  </div>
+										
+									</div>
+									<div class="project_inner">
+										<ul>
+											<li>
+												<p class="project_introduce float-left">项目框架:</p>
+												<p class="project_introduce_content  float-left" >SpringMvc+Mybasic+MySQL+Duddo+Redis+MangoDB+mui</p>
+											</li>
+											<li>
+												<p class="project_introduce float-left">开发环境:</p>
+												<p class="project_introduce_content float-left">MyEclipse、Tomcat、Maven、JDK</p>
+											</li>
+											<li>
+												<p class="project_introduce">项目简介:</p>
+												<p class="project_introduce_content " style="text-indent:2em">本项目是实现管理重点关注人员一切行轨迹，精准比对出关注人员信息加快人员定性处理，从而实现了对人员的研判</p>
+											</li>
+											<li>
+												<p class="project_introduce">责任描述:</p>
+												<p class="project_introduce_content">
+													<ol>
+														<li>添加网上解析链接</li>
+														<li>使用vuex缓存历史影片记录</li>
+														<li>使用python爬取网站上的视频链接</li>
+														<li>使用mui前端框架作为主体样式</li>
+													</ol>	
+												</p>
+											</li>
+											<li>
+												<p class="project_introduce">网址:</p>
+												<p class="project_introduce_content " style="text-indent:2em">手机浏览最佳</p>
+												<p class="project_introduce_content " style="text-indent:2em"><a href="http://www.nthoneybee.work/dist/" target="_blank">http://www.nthoneybee.work/dist/</a> </p>
+											</li>
+											<!-- <li>
+												<p class="project_introduce">问题解决:</p>
+												<p class="project_introduce_content">
+													<ol>
+														<li>订单每次添加或减少需要重新换算价格</li>
+													</ol>	
+												</p>
+											</li> -->
+										</ul>
+									</div>
+								</div>
+							  </div>
+							  <div role="tabpanel" class="tab-pane fade" id="project06" aria-labelledby="project03-tab">
+								<div class="project_content">
+									<div class="project_dv">
+										<div id="carousel-example-generic5" class="carousel slide" data-ride="carousel">
+											<!-- Indicators -->
+											<ol class="carousel-indicators">
+											  <li data-target="#carousel-example-generic5" data-slide-to="0" class="active"></li>
+											  <li data-target="#carousel-example-generic5" data-slide-to="1"></li>
+											  <li data-target="#carousel-example-generic5" data-slide-to="2"></li>
+											</ol>
+										  
+											<!-- Wrapper for slides -->
+											<div class="carousel-inner" role="listbox">
+											  <div class="item active">
+												<img src="images/gift_splash.png" alt="...">
+												<div class="carousel-caption">
+												  
+												</div>
+											  </div>
+											  <div class="item">
+												<img src="images/tx_img.png" alt="...">
+												<div class="carousel-caption">
+												 
+												</div>
+											  </div>
+											  <div class="item">
+												<img src="images/tx_img.png" alt="...">
+												<div class="carousel-caption">
+												 
+												</div>
+											  </div>
+											</div>
+										  
+											<!-- Controls -->
+											<a class="left carousel-control" href="#carousel-example-generic5" role="button" data-slide="prev">
+											  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+											  <span class="sr-only">Previous</span>
+											</a>
+											<a class="right carousel-control" href="#carousel-example-generic5" role="button" data-slide="next">
+											  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+											  <!-- 文本注释用 -->
+											  <span class="sr-only">Next</span>
+											</a>
+										  </div>
+										
+									</div>
+									<div class="project_inner">
+										<ul>
+											<li>
+												<p class="project_introduce float-left">项目框架:</p>
+												<p class="project_introduce_content  float-left" >SpringMvc+Mybasic+MySQL+Duddo+Redis+MangoDB</p>
+											</li>
+											<li>
+												<p class="project_introduce float-left">开发环境:</p>
+												<p class="project_introduce_content float-left">Eclipse、Tomcat、Maven、JDK、微信开发工具</p>
+											</li>
+											<li>
+												<p class="project_introduce">项目简介:</p>
+												<p class="project_introduce_content " style="text-indent:2em">本项目是实现消费者在线上下单房间，到预定时间消费者到达店里可以直接入住</p>
+											</li>
+											<li>
+												<p class="project_introduce">责任描述:</p>
+												<p class="project_introduce_content">
+													<ol>
+														<li>使用微信认证登录权限</li>
+														<li>使用iview-weapp-master样式布局</li>
+														<li>在服务器上配置https协议</li>
+														<li>使用订阅功能</li>
+													</ol>	
+												</p>
+											</li>
+											<!-- <li>
+												<p class="project_introduce">问题解决:</p>
+												<p class="project_introduce_content">
+													<ol>
+														<li>订单每次添加或减少需要重新换算价格</li>
+													</ol>	
+												</p>
+											</li> -->
+										</ul>
+									</div>
+								</div>
+							  </div>
+							</div>
+						  </div>
 					</div>
-					<div id="splash_introduction" class="ani_step_2">
-						<h2>赚礼券，换大礼！</h2>
-						<p>快来登录众测平台，赚礼券兑换丰厚实物大礼！<br>
-						iPad、小米、百度U盘，海量礼品等您拿！</p>
-					</div>
-					<a href="#"  id="splash_download_button" class="download-button ani_step_1">
-						<div class="download-title">
-							马上赚钱&nbsp;&nbsp;&nbsp;&nbsp;<img src="images/arrow_gift.png" alt="访问">
-						</div>
-					</a>
+					
 				</div>
 			</div>
 		</div>
-		<div id="page_feedback" class="page item" tag="feedback" progress="600">
+		<div id="page_feedback" class="page item active" tag="feedback" progress="600">
 			<div id="main">
 				<div id="splash">
 					<div class="container splash-container ani_step_2">
@@ -220,32 +839,32 @@
 		<div id="navbtns" class="container" >
 			<div class="navbtn">
 				<a href="javascript:switchPage(0)">
-					<img id="img_home" src="images/home_selected.png" alt="首页">
-					<div>首页</div>
+					<img id="img_home" src="images/home_selected.png" alt="基本信息">
+					<div>基本信息</div>
 				</a>
 			</div>
 			<div class="navbtn">
 				<a href="javascript:switchPage(1)">
-					<img id="img_intro" src="images/intro.png" alt="微任务介绍">
-					<div>微任务介绍</div>
+					<img id="img_intro" src="images/intro.png" alt="项目介绍">
+					<div>项目介绍</div>
 				</a>
 			</div>
 			<div class="navbtn">
 				<a href="javascript:switchPage(2)">
-					<img id="img_gift" src="images/gift.png" alt="精美礼品">
-					<div>精美礼品</div>
+					<img id="img_gift" src="images/gift.png" alt="作品展示">
+					<div>作品展示</div>
 				</a>
 			</div>
 			<div class="navbtn">
 				<a href="javascript:switchPage(3)">
-					<img id="img_feedback" src="images/feedback.png" alt="意见反馈">
-					<div>意见反馈</div>
+					<img id="img_feedback" src="images/feedback.png" alt="个人规划">
+					<div>个人规划</div>
 				</a>
 			</div>
 			<div class="navbtn">
 				<a href="javascript:switchPage(4)">
-					<img id="img_related" src="images/related.png" alt="相关产品">
-					<div>相关产品</div>
+					<img id="img_related" src="images/related.png" alt="励志名言">
+					<div>励志名言</div>
 				</a>
 			</div>
 		</div>

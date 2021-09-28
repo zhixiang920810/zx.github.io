@@ -313,8 +313,8 @@ body{
     font-size: 20px;
     color: rgb(134, 196, 87);
 }
-#page_related #related_demo{
-}
+/* #page_related #related_demo{
+} */
 #page_related #splash_introduction {
 	margin-top: 50px;
 	margin-left: 50px;
@@ -346,13 +346,13 @@ body{
 	
 }
 
-#page_related .download-button:hover {
+/* #page_related .download-button:hover {
 
 }
 
 #page_related .download-button:active {
 
-}
+} */
 
 #page_related .download-button:hover .download-title {
     background-color: rgb(243, 218, 221);
@@ -388,4 +388,17 @@ body{
 #declaration{
 	margin-top:50px;
 	color: rgba(255, 255, 255, 0.5);
+}
+
+
+ul{
+	list-style: none;
+}
+
+.clearfix::after{
+    content: '.';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
 }
